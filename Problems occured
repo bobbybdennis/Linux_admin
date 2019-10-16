@@ -1,0 +1,66 @@
+Week 1:
+
+What I did?
+installed cent OS and Ubuntu server
+
+Challenges? 
+Using the DHCLIENT-v command to get internet on my centOS.
+
+week 2
+
+creating the script to add a user  and added nano onto centOS so that I could 
+
+challenges: still work in progress on having the script to do everything the lesson asks of. 
+
+
+
+Week 3
+
+What happened?
+
+Well, I'm not sure, but i ended up deleting my user profile that i had been using.
+
+
+
+challenges? 
+
+figuring out where to copy the bash profile back into my account so I had rights to do anything again. with help from adrianna, it was located in the /etc/skel  and you can copy that back into the designated user to get your profile working again.
+
+
+
+
+
+Week 4
+
+What happened?
+
+adding a repository
+
+challenges:
+
+i was missing a mirror that was required for downloading that repository. downloaded the mirror and it worked.
+
+
+
+week 5
+
+what happened? 
+
+Some of the network commands were not working.
+
+Challenges: 
+
+Finding out which ones worked with installing " net-tools" and some worked by using SUDO
+
+
+
+
+
+week 6
+what happened? 
+
+
+
+
+
+
