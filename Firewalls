@@ -1,0 +1,67 @@
+1. Deal with web server (open needed ports, and forward port 80 traffic to 8080)
+#!/bin/bash
+
+read asnwer
+if [[ "$answer" == "yes" ]]; then
+read answer
+#This will open the ports for 80 to traffic 8080 on your server
+
+     sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+     sudo iptables -S
+
+
+2. Deal with MySQL service (open needed ports)
+#!/bin/bash
+
+echo " would you like to close MYSQL? yes or no?"
+read answer 
+if [[ "$answer" == "yes" ]]; then
+#this command will open the MYSQL feature port for your server
+     sudo iptables -A INPUT -p tcp --dport 25 -j ACCEPT
+     sudo iptables -S
+3. Deal with SSH service (allow incoming and outgoing SSH, second script to deny SSH)
+
+4. Deal with Email service (Such as allow or block incoming SMTP,POP3...)
+#!/bin/bash
+echo " Would you like to lockdown your email smtp ports? yes or no" 
+
+if[[ "$answer" -- " yes" ]]; then
+     sudo iptables -A INPUT -p tcp --dport 25 -j REJECT
+     
+     sudo iptables -A INPUT -p tcp --dport 465 -j REJECT
+     
+     sudo iptables -A INPUT -p tcp --dport 587 -j REJECT
+
+     sudo iptables -S
+fi
+
+
+5. Script to allow/block specific hosts, MAC addresses, block telnet, block ping
+#!/bin/bash
+
+echo " what mac address would you like to block?"
+read macadd
+#this will block all targeted mac addresses that you enter,ping requests and telnet access
+sudo iptables -A INPUT -m mac --mac-source $macadd -j DROP
+sudo iptables -A INPUT --proto icmp -j DROP
+sudo iptables -A INPUT -p tcp --dport 23 -j DROP
+
+
+
+6. Write a script to backup your Firewall/iptables
+#!/bin/bash
+#this will save your current config for your iptables incase your server goes down or you need to restore back to a config you like
+iptables-save > iptables.bak
+
+#!/bin/bash
+#the following script will restore your targeted file to restore your saved ip tables
+iptables-restore < iptables.bak  
+
+
+
+
+Write the specs for how you think you could prevent a DDOS attack using IPtables.  Can you write a script for this?
+
+
+You would take what information you have of who is attakcing your server and run the scripts to block those specific MAC address and IP addresses that you see.
+Yes it is possible to write a script for this and just run it each time you see a new ip address attempting to DDOs your server.
